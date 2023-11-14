@@ -1,8 +1,9 @@
 #include "Stage.h"
+
 #include "Engine/Model.h"
 //コンストラクタ
 Stage::Stage(GameObject* parent)
-    :GameObject(parent, "Stage"), hModel_(-1)
+    :GameObject(parent, "Stage"), hModel_(-1), hModel2_(-1)
 {
 }
 
@@ -17,6 +18,7 @@ void Stage::Initialize()
     //モデルデータのロード
     hModel_ = Model::Load("Assets/BoxDefault.fbx");
     assert(hModel_ >= 0);
+    
 }
 
 //更新
