@@ -191,7 +191,7 @@ HRESULT Sprite::LoadTexture()
 	pTexture_ = new Texture;
 
 	HRESULT hr;
-	hr = pTexture_->Load("Assets\\dragon_fire1_blue.png");
+	hr = pTexture_->Load("Assets\\fuusen.png");
 	if (FAILED(hr))
 	{
 		MessageBox(NULL, "テクスチャの作成に失敗しました", "エラー", MB_OK);
