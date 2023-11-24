@@ -24,6 +24,7 @@ void Stage::Initialize()
     assert(hModel2_ >= 0);
     hModel3_ = Model::Load("Assets/floor.fbx");
     assert(hModel3_ >= 0);
+    
    /* pSprite = new Sprite;
     pSprite->Initialize();*/
     
