@@ -33,7 +33,7 @@ void Stage::Initialize()
 //XV
 void Stage::Update()
 {
-    //transform_.rotate_.y += 5;
+    transform_.rotate_.y += 0.5;
 }
 
 //•`‰æ
