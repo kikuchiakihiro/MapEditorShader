@@ -19,7 +19,7 @@ cbuffer global
 //───────────────────────────────────────
 struct VS_OUT
 {
-
+	float4 eyePos;            //視点座標
 	float4 pos    : SV_POSITION;	//位置
 	float2 uv	: TEXCOORD;	//UV座標
 	float4 color	: COLOR;	//色（明るさ）
