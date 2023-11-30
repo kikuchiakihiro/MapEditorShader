@@ -74,7 +74,7 @@
 //	
 
 //───────────────────────────────────────
- // テクスチャ＆サンプラーデータのグローバル変数定義
+//  テクスチャ＆サンプラーデータのグローバル変数定義
 //───────────────────────────────────────
 Texture2D       g_texture : register(t0);   //テクスチャー
 SamplerState    g_sampler : register(s0);   //サンプラー
@@ -162,5 +162,7 @@ float4 PS(VS_OUT inData) : SV_Target
         specular = (pow(dot(inData.reflection, inData.viewDir), glossiness)) * g_texture.Sample(g_sampler, inData.uv) * lightSource;
     }
 
-    return ambient + diffuse + specular;
+    //return ambient + diffuse + specular;
+    
+    return diffuse;
 }

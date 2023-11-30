@@ -27,10 +27,12 @@ class Fbx
 		XMMATRIX	matW;
 		XMMATRIX	matWVP;
 		XMMATRIX	matNormal; 
-		XMFLOAT4    diffuseColor;		// ディフューズカラー（マテリアルの色）
+		XMFLOAT4    diffuseColor;	
+		int    isTextured;// ディフューズカラー（マテリアルの色）
+
 		XMFLOAT4	eyePos;
 		XMFLOAT4    lightDirection;
-		int    isTextured;
+		
 	};
 
 	struct VERTEX

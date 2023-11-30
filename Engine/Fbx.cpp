@@ -238,18 +238,15 @@ void Fbx::Draw(Transform& transform)
 		cb.matNormal = XMMatrixTranspose(transform.GetNormalMatrix());
 		cb.lightDirection = XMFLOAT4(1, 5, 0, 1);
 		XMStoreFloat4(&cb.eyePos, Camera::GetEyePosition());
-		if (i == 1) {
-			cb.diffuseColor = XMFLOAT4(1, 1, 1, 1);
-			cb.isTextured = pMaterialList_[i].pTexture != nullptr;
-		}
-			
-		else {
-			cb.diffuseColor = pMaterialList_[i].diffuse;
-			cb.isTextured = pMaterialList_[i].pTexture != nullptr;
-		}
 		
-			
+			cb.diffuseColor = XMFLOAT4(0, 0, 0, 0);
+			cb.isTextured = pMaterialList_[i].pTexture != nullptr;
 		
+
+		
+
+
+
 
 
 
@@ -258,7 +255,7 @@ void Fbx::Draw(Transform& transform)
 		memcpy_s(pdata.pData, pdata.RowPitch, (void*)(&cb), sizeof(cb));	// データを値を送る
 
 
-	
+
 		Direct3D::pContext_->Unmap(pConstantBuffer_, 0);	//再開
 
 
@@ -271,7 +268,7 @@ void Fbx::Draw(Transform& transform)
 
 
 
-	
+
 		// インデックスバッファーをセット
 		stride = sizeof(int);
 		offset = 0;
@@ -292,6 +289,7 @@ void Fbx::Draw(Transform& transform)
 		//描画
 		Direct3D::pContext_->DrawIndexed(indexCount_[i], 0, 0);
 	}
+
 
 }
 

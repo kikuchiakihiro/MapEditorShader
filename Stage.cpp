@@ -20,10 +20,13 @@ void Stage::Initialize()
     //モデルデータのロード
     hModel_ = Model::Load("Assets/Ball.fbx");
     assert(hModel_ >= 0);
-    hModel2_ = Model::Load("Assets/arrow.fbx");
-    assert(hModel2_ >= 0);
-    hModel3_ = Model::Load("Assets/floor.fbx");
-    assert(hModel3_ >= 0);
+    transform_.rotate_.x = -120;
+    
+    
+   /* hModel2_ = Model::Load("Assets/arrow.fbx");
+    assert(hModel2_ >= 0);*/
+   /* hModel3_ = Model::Load("Assets/floor.fbx");
+    assert(hModel3_ >= 0);*/
     
    /* pSprite = new Sprite;
     pSprite->Initialize();*/
@@ -33,7 +36,10 @@ void Stage::Initialize()
 //更新
 void Stage::Update()
 {
-    transform_.rotate_.y += 0.5;
+    //transform_.rotate_.y += 0.5;
+    //transform_.rotate_.y = 45;
+   
+
 }
 
 //描画
@@ -41,10 +47,10 @@ void Stage::Draw()
 {
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
-    Model::SetTransform(hModel2_, transform_);
-    Model::Draw(hModel2_);
-    Model::SetTransform(hModel3_, transform_);
-    Model::Draw(hModel3_);
+   /* Model::SetTransform(hModel2_, transform_);
+    Model::Draw(hModel2_);*/
+   /* Model::SetTransform(hModel3_, transform_);
+    Model::Draw(hModel3_);*/
     //pSprite->Draw(transform_);
 }
 
