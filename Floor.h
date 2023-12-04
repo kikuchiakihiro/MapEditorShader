@@ -2,16 +2,15 @@
 #include "Engine/GameObject.h"
 
 //◆◆◆を管理するクラス
-class Stage : public GameObject
+class Floor : public GameObject
 {
     int hModel_;    //モデル番号
-    
 public:
     //コンストラクタ
-    Stage(GameObject* parent);
+    Floor(GameObject* parent);
 
     //デストラクタ
-    ~Stage();
+    ~Floor();
 
     //初期化
     void Initialize() override;

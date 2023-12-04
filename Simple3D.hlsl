@@ -89,10 +89,11 @@ cbuffer global
     float4x4    matWVP;         // ワールド・ビュー・プロジェクションの合成行列
     float4x4    matNormal;           // 法線
     float4      diffuseColor;       //マテリアルの色＝拡散反射係数
-    bool        isTextured;         //テクスチャーが貼られているかどうか
+  
 
-    float4      vecLight;
-    float4      CameraPosition;
+    float4      lightDirection;
+    float4      eyePos;
+    bool        isTextured;         //テクスチャーが貼られているかどうか
 };
 
 //───────────────────────────────────────
@@ -121,13 +122,13 @@ VS_OUT VS(float4 pos : POSITION, float4 uv : TEXCOORD, float4 normal : NORMAL)
     outData.uv = uv;
 
 
-    /* l */float4 light = normalize(vecLight);
+    /* l */float4 light = normalize(lightDirection);
     /* n */normal = mul(normal, matNormal);
     /* r */outData.reflection = 2.0f * normal * dot(normal, light) - light;
-    /* v */outData.viewDir = normalize(mul(CameraPosition, matW) - mul(pos, matW));
+    /* v */outData.viewDir = normalize(mul(eyePos, matW) - mul(pos, matW));
 
 
-    float4 l = vecLight;
+    float4 l = lightDirection;
     light = normalize(light);
     outData.color = clamp(dot(normal, light), 0, 1);
 
@@ -147,7 +148,7 @@ float4 PS(VS_OUT inData) : SV_Target
     float4 ambient;
     float glossiness = 5.0f;
     float4 specular;
-
+    
     if (isTextured == false)
     {
         diffuse = lightSource * diffuseColor * inData.color;
@@ -162,7 +163,7 @@ float4 PS(VS_OUT inData) : SV_Target
         specular = (pow(dot(inData.reflection, inData.viewDir), glossiness)) * g_texture.Sample(g_sampler, inData.uv) * lightSource;
     }
 
-    //return ambient + diffuse + specular;
+    return ambient + diffuse + specular;
     
-    return diffuse;
+    //return diffuse;
 }

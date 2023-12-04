@@ -50,7 +50,7 @@ VS_OUT VS(float4 pos : POSITION, float4 uv : TEXCOORD)
 float4 PS(VS_OUT inData) : SV_Target
 {
 
-	float4 Colors = floor(g_texture.Sample(g_sampler, inData.uv) * 5.0) / 3;
+	float4 Colors = floor(g_texture.Sample(g_sampler, inData.uv) * 2.0) / 8;
 	return Colors;
 
 }
