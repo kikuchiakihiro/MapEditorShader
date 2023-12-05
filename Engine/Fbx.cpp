@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Texture.h"
 
+//const XMFLOAT4 = LIGHTPOS{ 1,5,0,1 };
 Fbx::Fbx()//vertexCount_(0), polygonCount_(0),
 {
 }
@@ -240,12 +241,12 @@ void Fbx::Draw(Transform& transform)
 		cb.diffuseColor = pMaterialList_[i].diffuse;
 		cb.lightDirection = XMFLOAT4(1, 5, 0, 1);
 		XMStoreFloat4(&cb.eyePos, Camera::GetEyePosition());
-		
+		cb.isTextured = pMaterialList_[i].pTexture != nullptr;
 			/*cb.diffuseColor = XMFLOAT4(1, 1, 1, 1);
 			cb.isTextured = pMaterialList_[i].pTexture != nullptr;*/
 		
 			
-			cb.isTextured = pMaterialList_[i].pTexture != nullptr;
+			
 		
 
 
