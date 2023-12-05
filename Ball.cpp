@@ -18,7 +18,7 @@ Sprite* pSprite = nullptr;
 void Ball::Initialize()
 {
     //モデルデータのロード
-    hModel_ = Model::Load("Assets/Ballkyu.fbx");
+    hModel_ = Model::Load("Assets/donut.fbx");
     assert(hModel_ >= 0);
 
 }

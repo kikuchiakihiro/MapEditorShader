@@ -37,24 +37,24 @@ void Stage::Initialize()
 //更新
 void Stage::Update()
 {
-    //transform_.rotate_.y += 0.5;
-    //transform_.rotate_.y = 45;
-    //光源の位置をWASDとかで指定
-    lightPos = LightPosController::GetLightPosition();
-    //ModelからLightPosもってくる
-    if (Input::IsKey(DIK_W))
-        lightPos.z += 0.5;
+    //////transform_.rotate_.y += 0.5;
+    //////transform_.rotate_.y = 45;
+    //////光源の位置をWASDとかで指定
+    ////lightPos = LightPosController::GetLightPosition();
+    //////ModelからLightPosもってくる
+    ////if (Input::IsKey(DIK_W))
+    ////    lightPos.z += 0.5;
 
-    if (Input::IsKey(DIK_A))
-        lightPos.x += 0.5;
+    ////if (Input::IsKey(DIK_A))
+    ////    lightPos.x += 0.5;
 
-    if (Input::IsKey(DIK_S))
-        lightPos.z -= 0.5;
+    ////if (Input::IsKey(DIK_S))
+    ////    lightPos.z -= 0.5;
 
-    if (Input::IsKey(DIK_D))
-        lightPos.x -= 0.5;
+    ////if (Input::IsKey(DIK_D))
+    ////    lightPos.x -= 0.5;
 
-    LightPosController::SetLightPosition(lightPos);
+    ////LightPosController::SetLightPosition(lightPos);
 
     //ballTrans.rotate_.y += 0.8;
 
