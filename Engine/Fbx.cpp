@@ -3,7 +3,7 @@
 #include "Direct3D.h"
 #include "Camera.h"
 #include "Texture.h"
-
+#include "../LightPosController.h"
 //const XMFLOAT4 = LIGHTPOS{ 1,5,0,1 };
 Fbx::Fbx()//vertexCount_(0), polygonCount_(0),
 {
@@ -195,17 +195,17 @@ void Fbx::InitMaterial(fbxsdk::FbxNode* pNode)
 
 		//テクスチャの数数
 		int fileTextureCount = lProperty.GetSrcObjectCount<FbxFileTexture>();
-		FbxDouble3  ambient = FbxDouble3(0, 0, 0);
-		FbxDouble3  diffuse = FbxDouble3(0, 0, 0);
-		FbxDouble3  specular = FbxDouble3(0, 0, 0);
-		ambient = pPhong->Ambient;
-		diffuse = pPhong->Diffuse;
+		//FbxDouble3  ambient = FbxDouble3(0, 0, 0);
+		//FbxDouble3  diffuse = FbxDouble3(0, 0, 0);
+		//FbxDouble3  specular = FbxDouble3(0, 0, 0);
+		//ambient = pPhong->Ambient;
+		//diffuse = pPhong->Diffuse;
 
-		// 環境光＆拡散反射光＆鏡面反射光の反射成分値をマテリアルバッファにコピー
-		pMaterial_[i].ambient = XMFLOAT4((float)ambient[0], (float)ambient[1], (float)ambient[2], 1.0f);
-		pMaterial_[i].diffuse = XMFLOAT4((float)diffuse[0], (float)diffuse[1], (float)diffuse[2], 1.0f);
-		pMaterial_[i].specular = XMFLOAT4(0, 0, 0, 0);
-		pMaterial_[i].shininess = 0;
+		//// 環境光＆拡散反射光＆鏡面反射光の反射成分値をマテリアルバッファにコピー
+		//pMaterial_[i].ambient = XMFLOAT4((float)ambient[0], (float)ambient[1], (float)ambient[2], 1.0f);
+		//pMaterial_[i].diffuse = XMFLOAT4((float)diffuse[0], (float)diffuse[1], (float)diffuse[2], 1.0f);
+		//pMaterial_[i].specular = XMFLOAT4(0, 0, 0, 0);
+		//pMaterial_[i].shininess = 0;
 		//テクスチャあり
 		if (fileTextureCount )
 		{
@@ -249,7 +249,7 @@ void Fbx::Draw(Transform& transform)
 		cb.matNormal = XMMatrixTranspose(transform.GetNormalMatrix());
 		cb.matW = XMMatrixTranspose(transform.GetWorldMatrix());
 		cb.diffuseColor = pMaterialList_[i].diffuse;
-		cb.lightDirection = XMFLOAT4(1, 1, 1, 1);
+		cb.lightDirection = LightPosController::GetLightPosition();
 		XMStoreFloat4(&cb.eyePos, Camera::GetEyePosition());
 		cb.isTextured = pMaterialList_[i].pTexture != nullptr;
 			/*cb.diffuseColor = XMFLOAT4(1, 1, 1, 1);

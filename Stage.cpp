@@ -16,7 +16,7 @@ Stage::~Stage()
 {
 }
 
-//Sprite* pSprite = nullptr;
+
 //初期化
 void Stage::Initialize()
 {
@@ -29,46 +29,45 @@ void Stage::Initialize()
    /* hModel3_ = Model::Load("Assets/floor.fbx");
     assert(hModel3_ >= 0);*/
     
-   /* pSprite = new Sprite;
-    pSprite->Initialize();*/
     
+    ModelLight = Model::Load("Assets/Ballkyu.fbx");
+    assert(ModelLight >= 0);
 }
 
 //更新
 void Stage::Update()
 {
-    //////transform_.rotate_.y += 0.5;
-    //////transform_.rotate_.y = 45;
-    //////光源の位置をWASDとかで指定
-    ////lightPos = LightPosController::GetLightPosition();
-    //////ModelからLightPosもってくる
-    ////if (Input::IsKey(DIK_W))
-    ////    lightPos.z += 0.5;
+   
+    //光源の位置をWASDとかで指定
+    lightPos_ = LightPosController::GetLightPosition();
+    //ModelからLightPosもってくる
+    if (Input::IsKey(DIK_W))
+        lightPos_.z += 0.5;
 
-    ////if (Input::IsKey(DIK_A))
-    ////    lightPos.x += 0.5;
+    if (Input::IsKey(DIK_A))
+        lightPos_.x += 0.5;
 
-    ////if (Input::IsKey(DIK_S))
-    ////    lightPos.z -= 0.5;
+    if (Input::IsKey(DIK_S))
+        lightPos_.z -= 0.5;
 
-    ////if (Input::IsKey(DIK_D))
-    ////    lightPos.x -= 0.5;
+    if (Input::IsKey(DIK_D))
+        lightPos_.x -= 0.5;
 
-    ////LightPosController::SetLightPosition(lightPos);
-
-    //ballTrans.rotate_.y += 0.8;
+    LightPosController::SetLightPosition(lightPos_);
+    LightTrans.position_ = XMFLOAT3{1,1,1};
 
 }
 
 //描画
 void Stage::Draw()
 {
-   
+     Model::SetTransform(ModelLight, transform_);
+    Model::Draw(ModelLight);
    /* Model::SetTransform(hModel2_, transform_);
     Model::Draw(hModel2_);*/
    /* Model::SetTransform(hModel3_, transform_);
     Model::Draw(hModel3_);*/
-    //pSprite->Draw(transform_);
+    
 }
 
 //開放

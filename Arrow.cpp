@@ -20,7 +20,8 @@ void Arrow::Initialize()
     //モデルデータのロード
     hModel_ = Model::Load("Assets/Arrow.fbx");
     assert(hModel_ >= 0);
-    transform_.scale_ = { 0.5 ,0.5 ,0.5 };
+    transform_.position_.x = 3;
+    transform_.scale_ = { 0.25 ,0.25 ,0.25 };
 }
 
 //更新

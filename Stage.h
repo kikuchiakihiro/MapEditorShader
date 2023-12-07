@@ -5,8 +5,13 @@
 class Stage : public GameObject
 {
     int hModel_;    //モデル番号
-    
+    XMFLOAT4 lightPos_;
+    Transform LightTrans;
+    int ModelLight;
 public:
+
+    
+
     //コンストラクタ
     Stage(GameObject* parent);
 
