@@ -20,6 +20,7 @@ class Fbx
 	{
 		Texture* pTexture;
 		XMFLOAT4	diffuse;
+		XMFLOAT4	ambient;
 		XMFLOAT4    specular;
 		float		shininess;
 	};
@@ -30,9 +31,12 @@ class Fbx
 		XMMATRIX	matWVP;//ワールドビュープロジェクション
 		XMMATRIX	matNormal; //逆行列
 		XMFLOAT4    diffuseColor;	//面の色
+		XMFLOAT4	ambient;
+		XMFLOAT4    specular;
 		XMFLOAT4    lightDirection;
+		FLOAT		shininess;
 		XMFLOAT4	eyePos;
-		BOOL    isTextured;// ディフューズカラー（マテリアルの色）
+		BOOL		isTextured;// ディフューズカラー（マテリアルの色）
 		
 	};
 
