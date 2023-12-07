@@ -20,6 +20,8 @@ class Fbx
 	{
 		Texture* pTexture;
 		XMFLOAT4	diffuse;
+		XMFLOAT4    specular;
+		float		shininess;
 	};
 
 	struct CONSTANT_BUFFER

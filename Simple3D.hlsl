@@ -166,7 +166,7 @@ float4 PS(VS_OUT inData) : SV_Target
     float4 NL = saturate(dot(inData.normal, normalize(lightPosition)));
 
     float4 reflect = normalize(2 * NL * inData.normal - normalize(lightPosition));
-    float4 specular = pow(saturate(dot(reflect, normalize(inData.eyev))), 8);
+    float4 specular = pow(saturate(dot(reflect, normalize(inData.eyev))), 100);
 
     if (isTexture == false)
     {
