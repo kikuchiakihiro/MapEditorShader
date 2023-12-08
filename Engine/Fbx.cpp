@@ -249,8 +249,8 @@ void Fbx::Draw(Transform& transform)
 		cb.matNormal = XMMatrixTranspose(transform.GetNormalMatrix());
 		cb.matW = XMMatrixTranspose(transform.GetWorldMatrix());
 		cb.diffuseColor = pMaterialList_[i].diffuse;
-		cb.lightDirection = LightPosController::GetLightPosition();
-		XMStoreFloat4(&cb.eyePos, Camera::GetEyePosition());
+		//cb.lightDirection = LightPosController::GetLightPosition();
+		//XMStoreFloat4(&cb.eyePos, Camera::GetEyePosition());
 		cb.isTextured = pMaterialList_[i].pTexture != nullptr;
 			/*cb.diffuseColor = XMFLOAT4(1, 1, 1, 1);
 			cb.isTextured = pMaterialList_[i].pTexture != nullptr;*/
@@ -259,7 +259,7 @@ void Fbx::Draw(Transform& transform)
 			
 		
 
-
+		
 
 
 

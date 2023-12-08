@@ -5,6 +5,9 @@
 #include "Engine/Transform.h"
 #include "Engine/Input.h"
 #include "LightPosController.h"
+void Stage::IntConstantBuffer()
+{
+}
 //コンストラクタ
 Stage::Stage(GameObject* parent)
     :GameObject(parent, "Stage")

@@ -33,9 +33,9 @@ class Fbx
 		XMFLOAT4    diffuseColor;	//面の色
 		//XMFLOAT4	ambient;
 		//XMFLOAT4    specular;
-		XMFLOAT4    lightDirection;
+		//XMFLOAT4    lightDirection;
 		//FLOAT		shininess;
-		XMFLOAT4	eyePos;
+		//XMFLOAT4	eyePos;
 		BOOL		isTextured;// ディフューズカラー（マテリアルの色）
 		
 	};
