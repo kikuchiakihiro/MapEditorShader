@@ -5,6 +5,7 @@
 #include "Engine/Transform.h"
 #include "Engine/Input.h"
 #include "LightPosController.h"
+#include "Engine/Camera.h"
 void Stage::IntConstantBuffer()
 {
 }
@@ -58,6 +59,13 @@ void Stage::Update()
 
     LightPosController::SetLightPosition(lightPos_);
     LightTrans.position_ = XMFLOAT3{1,1,1};
+
+    CBUFF_STAGESCENE cb;
+    cb.lightDirection = lightSourcePosition_;
+    XMStoreFloat4(&cb.eyePos, Camera::GetEyePosition());
+
+    Direct3D::pContext_->UpdateSubresource(pCBStageScene_, 0, NULL, &cb, 0, 0);
+
 
 }
 
