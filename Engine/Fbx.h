@@ -20,9 +20,7 @@ class Fbx
 	{
 		Texture* pTexture;
 		XMFLOAT4	diffuse;
-		//XMFLOAT4	ambient;
-		//XMFLOAT4    specular;
-		//float		shininess;
+		
 	};
 
 	struct CONSTANT_BUFFER
@@ -31,11 +29,6 @@ class Fbx
 		XMMATRIX	matWVP;//ワールドビュープロジェクション
 		XMMATRIX	matNormal; //逆行列
 		XMFLOAT4    diffuseColor;	//面の色
-		//XMFLOAT4	ambient;
-		//XMFLOAT4    specular;
-		//XMFLOAT4    lightDirection;
-		//FLOAT		shininess;
-		//XMFLOAT4	eyePos;
 		BOOL		isTextured;// ディフューズカラー（マテリアルの色）
 		
 	};
