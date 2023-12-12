@@ -17,10 +17,10 @@ Floor::~Floor()
 void Floor::Initialize()
 {
     //モデルデータのロード
-    hModel_ = Model::Load("Assets/Floor.fbx");
+    hModel_ = Model::Load("Assets/Ball.fbx");
     assert(hModel_ >= 0);
-    transform_.position_.z = 3;
-    transform_.position_.y = -2;
+    /*transform_.position_.z = 3;
+    transform_.position_.y = -2;*/
    
 }
 

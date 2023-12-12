@@ -40,9 +40,9 @@ class Fbx
 		XMMATRIX	matW;//wvp
 		XMMATRIX	matNormal;//ƒ[ƒ‹ƒh•ÏŠ·‚¾‚¯‚Ì‚â‚Â
 		XMFLOAT4	diffuseColor;
+		BOOL		isTextured;
 		XMFLOAT4	ambient;
 		XMFLOAT4	specular;
-		BOOL		isTextured;
 		float		shininess;
 	};
 
