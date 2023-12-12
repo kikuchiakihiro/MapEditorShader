@@ -29,6 +29,9 @@ class Fbx
 	{
 		Texture* pTexture;
 		XMFLOAT4 diffuse;
+		XMFLOAT4 ambient;
+		XMFLOAT4 specular;
+		float	 shininess;
 	};
 
 	struct CBUFF_MODEL
@@ -37,7 +40,10 @@ class Fbx
 		XMMATRIX	matW;//wvp
 		XMMATRIX	matNormal;//ÉèÅ[ÉãÉhïœä∑ÇæÇØÇÃÇ‚Ç¬
 		XMFLOAT4	diffuseColor;
+		XMFLOAT4	ambient;
+		XMFLOAT4	specular;
 		BOOL		isTextured;
+		float		shininess;
 	};
 
 	struct VERTEX
