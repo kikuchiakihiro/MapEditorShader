@@ -20,7 +20,7 @@ class Stage : public GameObject
     Transform trLightBall;
     ID3D11Buffer* pCBStageScene_;
     //Quad* q;
-    void InitConstantBuffer();
+    void IntConstantBuffer();
     XMFLOAT4	lightSourcePosition_;
 public:
     //コンストラクタ

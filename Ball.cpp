@@ -20,14 +20,14 @@ void Ball::Initialize()
     //モデルデータのロード
     hModel_ = Model::Load("Assets/donut.fbx");
     assert(hModel_ >= 0);
-    transform_.position_.y = 1;
-    transform_.scale_ = { 0.5,0.5,0.5 };
+    //transform_.position_.y = 1;
+    transform_.scale_ = { 0.125,0.125,0.125 };
 }
 
 //更新
 void Ball::Update()
 {
-    transform_.rotate_.y += 0.5;
+    //transform_.rotate_.y += 0.5;
 }
 
 //描画

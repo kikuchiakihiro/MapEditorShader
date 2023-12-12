@@ -104,7 +104,7 @@ namespace {
     const XMFLOAT4 DEF_LIGHT_POSITION{ 1, 2, 1, 0 };
 }
 
-void Stage::InitConstantBuffer()
+void Stage::IntConstantBuffer()
 {
     D3D11_BUFFER_DESC cb;
     cb.ByteWidth = sizeof(CBUFF_STAGESCENE);
@@ -126,7 +126,7 @@ void Stage::InitConstantBuffer()
 
 //コンストラクタ
 Stage::Stage(GameObject* parent)
-    :GameObject(parent, "Stage"), hModel_(-1), hGround_(-1), lightSourcePosition_(DEF_LIGHT_POSITION)
+    :GameObject(parent, "Stage"),  lightSourcePosition_(DEF_LIGHT_POSITION)
 {
 }
 
@@ -138,38 +138,25 @@ Stage::~Stage()
 //初期化
 void Stage::Initialize()
 {
-    ////モデルデータのロード
-    //hModel_ = Model::Load("assets/Torus.fbx");
-    //hGround_ = Model::Load("assets/Ground.fbx");
-    //hLightBall_ = Model::Load("assets/RedBall.fbx");
-
-  /*  assert(hModel_ >= 0);
-    assert(hGround_ >= 0);
-    assert(hLightBall_ >= 0);*/
+    hLightBall_ = Model::Load("assets/Ballkyu.fbx");
+    assert(hLightBall_ >= 0);
     Camera::SetPosition(XMVECTOR{ 0, 10, -20, 0 });
     Camera::SetTarget(XMVECTOR{ 0, 2, 0, 0 });
-   /* trDonuts.position_ = { 0, 2, 0 };
-    trDonuts.rotate_ = { 0, 0, 0 };
-    trDonuts.scale_ = { 1,1,1 };
-
-    trGround.position_ = { 0, 0, 0 };
-    trGround.rotate_ = { 0, 0, 0 };
-    trGround.scale_ = { 10, 10, 10 };
+   
 
     trLightBall.position_ = { 0, 0, 0 };
     trLightBall.rotate_ = { 0, 0, 0 };
-    trLightBall.scale_ = { 0.4, 0.4, 0.4 };*/
+    trLightBall.scale_ = { 0.01, 0.01, 0.01};
     Instantiate<axisClass>(this);
-    InitConstantBuffer();
+    IntConstantBuffer();
 }
 
 //更新
 void Stage::Update()
 {
 
-   
     //transform_.rotate_.y += 0.5f;
-    //trDonuts.rotate_.y += 0.5f;
+    // trDonuts.rotate_.y += 0.5f;
     if (Input::IsKey(DIK_RIGHT))
     {
         XMFLOAT4 p = GetLightPos();
@@ -219,13 +206,14 @@ void Stage::Update()
         SetLightPos(margin);
     }
     XMFLOAT4 tmp{ GetLightPos() };
-    //trLightBall.position_ = { tmp.x, tmp.y,tmp.z };
+    trLightBall.position_ = { tmp.x, tmp.y,tmp.z };
 
     CBUFF_STAGESCENE cb;
     cb.lightPosition = lightSourcePosition_;
     XMStoreFloat4(&cb.eyePos, Camera::GetEyePosition());
 
-    Direct3D::pContext_->UpdateSubresource(pCBStageScene_, 0, NULL, &cb, 0, 0);
+    Direct3D::pContext_->UpdateSubresource(pCBStageScene_,
+        0, NULL, &cb, 0, 0);
 
     Direct3D::pContext_->VSSetConstantBuffers(1, 1, &pCBStageScene_);	//頂点シェーダー用	
     Direct3D::pContext_->PSSetConstantBuffers(1, 1, &pCBStageScene_);	//ピクセルシェーダー用
@@ -239,8 +227,8 @@ void Stage::Draw()
     //Model::Draw(hModel_);
     ////Model::SetTransform(hGround_, trGround);
     ////Model::Draw(hGround_);
-    //Model::SetTransform(hLightBall_, trLightBall);
-    //Model::Draw(hLightBall_);
+    Model::SetTransform(hLightBall_, trLightBall);
+    Model::Draw(hLightBall_);
 }
 
 //開放
