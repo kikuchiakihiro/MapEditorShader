@@ -273,18 +273,11 @@ void Fbx::Draw(Transform& transform)
 		cb.ambientColor = pMaterialList_[i].ambient;
 		cb.specularColor = pMaterialList_[i].specular;
 		cb.shininess = pMaterialList_[i].shininess;
-		//cb.lightPosition = lightSourcePosition_;
-		//XMStoreFloat4(&cb.eyePos,Camera::GetEyePosition());
-		//int n = (int)(pMaterialList_[i].pTexture != nullptr);
-		//cb.isTextured = { n,n,n,n };
+		
 		cb.isTextured = pMaterialList_[i].pTexture != nullptr;
 
 
-		//D3D11_MAPPED_SUBRESOURCE pdata;
-		//Direct3D::pContext_->Map(pConstantBuffer_, 0, D3D11_MAP_WRITE_DISCARD, 0, &pdata);	// GPUからのデータアクセスを止める
-		//memcpy_s(pdata.pData, pdata.RowPitch, (void*)(&cb), sizeof(cb));	// データを値を送る
-
-		//Direct3D::pContext_->Unmap(pConstantBuffer_, 0);	//再開
+		
 
 		Direct3D::pContext_->UpdateSubresource(pConstantBuffer_, 0, NULL, &cb, 0, 0);
 
