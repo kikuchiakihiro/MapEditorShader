@@ -76,3 +76,4 @@ public:
 	void	SetRenderingShader(RENDER_STATE _state) { state_ = _state; }
 	void    Release();
 };
+
